@@ -1,7 +1,26 @@
-<h1>Message with id {{ message.id }}</h1>
-<h3>Content</h3>
-<p>{{ message.content }}</p>
-<h3>Emission time</h3>
-<p> {{ message.emission_time }} </p>
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div class="module">
+<h2 class="sub_title">Message details</h1>
+    <div class="details">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td>{{ message.content }}</td>
+            </tr>
+            <tr>
+                <td>Emission time</td>
+                <td>{{ message.emission_time }}</td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td> {{ message.author }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 <a href= "{% url 'message_app:messages' %}"> Back</a>

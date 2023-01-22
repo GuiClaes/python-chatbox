@@ -2,15 +2,58 @@ body {
     width: 75%;
 }
 
+.sub_title {
+    margin-top: 0px;
+}
+
+h2 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 35px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  
+  h2 span {
+    display: block;
+    font-size: 0.5em;
+    line-height: 1.3;
+  }
+  h2 em {
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  .sub_title h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+  }
+
+.module {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+}
+
 li.message {
     border: thick double black;
     margin: 6px;
 }
+
 .time {
     background-color: lightgreen;
+    padding-left: 5px;
 }
 .messageContent {
     height: 5%;
+    padding-left: 10px;
 }
 
 .messageUl {
@@ -40,4 +83,78 @@ ul.lowerButton li a {
     display: inline-block;
     text-align: center;
     text-decoration: none;
+    color: black;
+}
+
+.backButton {
+    color:black;
+    border: 1px solid black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgreen;
+    padding: 5px 6px;
+    text-decoration: none;
+    height: 25px;
+    border-radius: 3px;
+}
+
+.backButton:hover {
+    background-color: ghostwhite;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+label {
+    cursor: default;
+}
+
+input[type=text] {
+    width: 100%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+input.author{
+    width: 15em;
+}
+
+input.content{
+    width: 66%;
+}
+
+.container {
+    padding-left: 20px;
+}
+
+.bottomRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+tr {
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+}
+
+.details {
+    margin: 15px;
 }

@@ -1,7 +1,19 @@
-<h2>Message creation</h2>
-<a href= "{% url 'message_app:messages' %}"> Close</a>
-<form action="{% url 'message_app:create' %}" method="post">
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<h2 class="sub_title">Message creation</h2>
+<form class="container" action="{% url 'message_app:create' %}" method="post">
     {% csrf_token %}
-    {{ form.as_table }}
-    <input type="submit" value="Create a message">
+    <div class="row">
+        <label class="form_label"> Author </label>
+        {{ form.author }}
+    </div>
+    <div class="row">
+        <label class="form_label"> Message </label>
+        {{ form.content }}
+    </div>
+    <div class="bottomRow">
+        <input class="backButton" type="submit" value="Create a message">
+        <button style="float:right" class="backButton" onclick="location.href = '/message-app'">Close</button>
+    </div>
 </form>

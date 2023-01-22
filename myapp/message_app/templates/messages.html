@@ -1,20 +1,25 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
- <div id='header'>{% include "header.html" %}</div>
+ <div id='header' class="module">{% include "header.html" %}</div>
 {% if form %}
+<div class="module">
     {% include "message_form.html" %}
+</div>
 {% endif %}
-<h2>Message list</h2>
-<ul class="messageUl">
-    {% for message in messages %}
-        <li class="message">
-            <div class="time">{{ message.emission_time }} </div> 
-            <div class="messageContent">{{ message.content }}</div>
-            <ul div class="lowerButton">
-                <li><a href="{% url 'message_app:message' message.id %}">Details</a></li>
-                <li><a href="{% url 'message_app:message' message.id %}">Report</a></li>
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+<div class="module">
+    <h2 class="sub_title">Message list</h2>
+    <ul class="messageUl">
+        {% for message in messages %}
+            <li class="message">
+                <div class="time">{{ message.emission_time }} </div> 
+                <div class="messageContent">{{ message.content }}</div>
+                <ul div class="lowerButton">
+                    <li><a href="{% url 'message_app:message' message.id %}">Details</a></li>
+                    <li><a href="{% url 'message_app:delete' message.id %}">Delete</a></li>
+                    <li style="float:right"><a href="{% url 'message_app:message' message.id %}">Author <b>{{ message.author }} </b></a></li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

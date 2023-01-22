@@ -1,3 +1,7 @@
+#header {
+    padding: 0px;
+}
+
 ul.horizontal {
     list-style-type: none;
     margin: 0;
@@ -33,6 +37,7 @@ ul.horizontal li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    color: black;
 }
 
 .context-bar {
