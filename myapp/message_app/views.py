@@ -9,9 +9,9 @@ APP_NAME = "message-app"
 def index(request):
     return get_messages(request)
 
-def get_message(request, message_id):
+def get_message_details(request, message_id):
     message = get_object_or_404(Message, pk = message_id)
-    return render(request, 'message.html', {'message': message})
+    return render(request, 'message_details.html', {'message': message})
 
 def get_messages(request):
     messages = Message.objects.order_by('-emission_time')
@@ -39,4 +39,3 @@ def create_message(request):
             return HttpResponseRedirect('/'+APP_NAME)
 
     return get_messages_form(request, form)
-    #return render(request, 'message_form.html', {'form': form})

@@ -1,5 +1,7 @@
 #header {
-    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: lightgreen;
 }
 
 ul.horizontal {
@@ -7,7 +9,6 @@ ul.horizontal {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: lightgreen;
 }
 
 ul {

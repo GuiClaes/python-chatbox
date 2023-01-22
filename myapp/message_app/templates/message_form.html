@@ -1,19 +1,22 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'form.css' %}">
 
 <h2 class="sub_title">Message creation</h2>
 <form class="container" action="{% url 'message_app:create' %}" method="post">
     {% csrf_token %}
-    <div class="row">
-        <label class="form_label"> Author </label>
-        {{ form.author }}
-    </div>
-    <div class="row">
-        <label class="form_label"> Message </label>
-        {{ form.content }}
-    </div>
-    <div class="bottomRow">
-        <input class="backButton" type="submit" value="Create a message">
-        <button style="float:right" class="backButton" onclick="location.href = '/message-app'">Close</button>
+    <table>
+        <tr class="row">
+            <td class="first_td"><label class="form_label"> Author </label></td>
+            <td>{{ form.author }}</td>
+        </tr>
+        <tr class="row">
+            <td class="first_td"><label class="form_label"> Message </label></td>
+            <td>{{ form.content }}</td>
+        </tr>
+    </table>
+    <div class="bottom_row">
+        <button class="back_button" onclick="location.href = '/message-app'">Close</button>
+        <input id="right_button" class="back_button" type="submit" value="Create a message">
     </div>
 </form>
