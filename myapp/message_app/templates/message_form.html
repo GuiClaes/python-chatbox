@@ -1,0 +1,7 @@
+<h2>Message creation</h2>
+<a href= "{% url 'message_app:messages' %}"> Close</a>
+<form action="{% url 'message_app:create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Create a message">
+</form>

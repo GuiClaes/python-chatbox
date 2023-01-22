@@ -1,0 +1,7 @@
+<h1>Message with id {{ message.id }}</h1>
+<h3>Content</h3>
+<p>{{ message.content }}</p>
+<h3>Emission time</h3>
+<p> {{ message.emission_time }} </p>
+
+<a href= "{% url 'message_app:messages' %}"> Back</a>

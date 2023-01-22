@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+ <div id='header'>{% include "header.html" %}</div>
+{% if form %}
+    {% include "message_form.html" %}
+{% endif %}
+<h2>Message list</h2>
+<ul class="messageUl">
+    {% for message in messages %}
+        <li class="message">
+            <div class="time">{{ message.emission_time }} </div> 
+            <div class="messageContent">{{ message.content }}</div>
+            <ul div class="lowerButton">
+                <li><a href="{% url 'message_app:message' message.id %}">Details</a></li>
+                <li><a href="{% url 'message_app:message' message.id %}">Report</a></li>
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

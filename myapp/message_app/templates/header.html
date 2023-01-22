@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'header.css' %}">
+<div class="context-bar">
+    <ul class="horizontal">
+        <li>
+            <a href="{% url 'message_app:create' %}">Create a message</a>
+        </li>
+        <li>
+            <a href="">Do nothing 1</a>
+        </li>
+        <li>
+            <a href="">Do nothing 2</a>
+        </li>
+        <li>
+            <a href="">Do nothing 3</a>
+        </li>
+        <li style="float:right">
+            <a href="">Do nothing 4</a>
+        </li>
+
+    </ul>
+</div>
