@@ -1,0 +1,38 @@
+form {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+label {
+    cursor: default;
+}
+
+input[type=text] {
+    width: 100%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+input.author{
+    width: 15em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+td.first_td {
+    width: 10%;
+}

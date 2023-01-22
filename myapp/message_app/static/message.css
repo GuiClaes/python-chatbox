@@ -1,0 +1,44 @@
+li.message {
+    border: thick double black;
+    margin: 6px;
+}
+
+.time {
+    background-color: lightgreen;
+    padding-left: 5px;
+}
+.messageContent {
+    height: 5%;
+    padding-left: 10px;
+}
+
+.messageUl {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+
+ul.lowerButton {
+    border-top: 1px dotted black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgreen;
+}
+
+ul.lowerButton li {
+    float: left;
+    padding: 5px 6px;
+}
+
+ul.lowerButton li:hover {
+    background-color: ghostwhite;
+}
+
+ul.lowerButton li a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}

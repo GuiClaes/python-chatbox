@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+
+<div id="detail_module" class="module">
+<h2 class="sub_title">Message details</h1>
+    <div class="details">
+        <table>
+            <th>Key</th>
+            <th>Value</th>
+            <tr>
+                <td>Id</td>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td> {{ message.author }}</td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td>{{ message.content }}</td>
+            </tr>
+            <tr>
+                <td>Emission time</td>
+                <td>{{ message.emission_time }}</td>
+            </tr>
+        </table>
+        <div class="bottom_row">
+            <a class="back_button" href= "{% url 'message_app:messages' %}">Back</a>
+            <a id="right_button" class="back_button" href="{% url 'message_app:delete' message.id %}">Delete</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+#detail_module {
+    width: 50%;
+    padding-bottom: 0px;
+}
+
+.details {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+td {
+    text-align: center;
+    padding-left: 15px;
+}
+
+tr:hover {
+    background-color: lightgreen;
+}
+
+th {
+    background-color: lightgreen;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
