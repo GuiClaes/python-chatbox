@@ -5,7 +5,7 @@ app_name = 'message_app'
 urlpatterns = [
     path('', views.index, name='index'),
     path('message', views.get_messages, name='messages'),
-    path('message/details/<int:message_id>', views.get_message_details, name='message'),
+    path('message/<int:message_id>/details', views.get_message_details, name='message_details'),
     path('message/create', views.create_message, name='create'),
-    path('message/delete/<int:message_id>', views.delete_message, name='delete')
+    path('message/<int:message_id>/delete', views.delete_message, name='delete')
 ]

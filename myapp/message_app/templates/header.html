@@ -3,20 +3,15 @@
 <div class="context-bar">
     <ul class="horizontal">
         <li>
-            <a href="{% url 'message_app:create' %}">Create a message</a>
-        </li>
-        <li>
             <a href="{% url 'message_app:messages' %}">Message list</a>
         </li>
-        <li>
-            <a href="">Do nothing 2</a>
-        </li>
-        <li>
-            <a href="">Do nothing 3</a>
-        </li>
-        <li style="float:right">
-            <a href="">Logout</a>
-        </li>
-
+        <div style="float:right">
+            <li>
+                <a href="{% url 'login_app:user_details' user_id %}">See my profile</a>
+            </li>
+            <li>
+                <a href="{% url 'login_app:login' %}">Logout</a>
+            </li>
+        </div>
     </ul>
 </div>

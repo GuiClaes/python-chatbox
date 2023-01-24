@@ -1,0 +1,44 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'form.css' %}">
+
+<body>
+    <div class="module">
+        <h2 class="sub_title">Register</h2>
+        <form class="container" action="{% url 'login_app:register' %}" method="post">
+            {% csrf_token %}
+            <div class="box">
+                <table class="box_left">
+                    <tr class="row">
+                        <td class="first_td"><label class="form_label"> Username </label></td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="first_td"><label class="form_label"> Email </label></td>
+                        <td>{{ form.email }}</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="first_td"><label class="form_label"> Password </label></td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="first_td"><label class="form_label"> Confirm password </label></td>
+                        <td>{{ form.confirm_password }}</td>
+                    </tr>
+                </table>
+                <div class="box_right">
+                    <div class="information_box">
+                        <p>This register app is experimental, please do not provide sensible information.</p>
+                    </div>
+                    {% if error_message %}
+                        <div class='error_message'>{{ error_message }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="bottom_row">
+                <button class="back_button" onclick="location.href = '/login-app/login'">Back</button>
+                <input class="right_button back_button" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</body>

@@ -2,32 +2,31 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <link rel="stylesheet" href="{% static 'detail.css' %}">
 
-<div id="detail_module" class="module">
-<h2 class="sub_title">Message details</h1>
+<div id="detail_module">
+    <h2 class="sub_title">Message details</h2>
     <div class="details">
-        <table>
-            <th>Key</th>
-            <th>Value</th>
-            <tr>
-                <td>Id</td>
-                <td>{{ message.id }}</td>
+        <table class="details_table">
+            <th class="details_th">Key</th>
+            <th class="details_th">Value</th>
+            <tr class="details_tr">
+                <td class="details_td">Id</td>
+                <td class="details_td">{{ message.id }}</td>
             </tr>
-            <tr>
-                <td>Author</td>
-                <td> {{ message.author }}</td>
+            <tr class="details_tr">
+                <td class="details_td">Author</td>
+                <td class="details_td"> {{ message.author }}</td>
             </tr>
-            <tr>
-                <td>Content</td>
-                <td>{{ message.content }}</td>
+            <tr class="details_tr">
+                <td class="details_td">Content</td>
+                <td class="details_td">{{ message.content }}</td>
             </tr>
-            <tr>
-                <td>Emission time</td>
-                <td>{{ message.emission_time }}</td>
+            <tr class="details_tr">
+                <td class="details_td">Emission time</td>
+                <td class="details_td">{{ message.emission_time }}</td>
             </tr>
         </table>
         <div class="bottom_row">
-            <a class="back_button" href= "{% url 'message_app:messages' %}">Back</a>
-            <a id="right_button" class="back_button" href="{% url 'message_app:delete' message.id %}">Delete</a>
+            <a class="right_button back_button" href="{% url 'login_app:user_details' message.author %}">See user details</a>
         </div>
     </div>
 </div>

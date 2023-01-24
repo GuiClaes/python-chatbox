@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+
+<div id="detail_module" class="module">
+    <h2 class="sub_title">User details</h2>
+    <div class="details">
+        <table class="details_table">
+            <th class="details_th">Key</th>
+            <th class="details_th">Value</th>
+            <tr class="details_tr">
+                <td class="details_td">Id</td>
+                <td class="details_td">{{ user.username }}</td>
+            </tr>
+            <tr class="details_tr">
+                <td class="details_td">Author</td>
+                <td class="details_td"> {{ user.email }}</td>
+            </tr>
+        </table>
+        <div class="bottom_row">
+            <a class="right_button back_button" href= "{% url 'message_app:index' %}">Back</a>
+        </div>
+    </div>
+</div>
