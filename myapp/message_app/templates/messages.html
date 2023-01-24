@@ -2,25 +2,17 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <link rel="stylesheet" href="{% static 'message.css' %}">
 
- <div id='header' class="module">{% include "header.html" %}</div>
-{% if form %}
-<div class="module">
-    {% include "message_form.html" %}
-</div>
-{% endif %}
-<div class="module">
-    <h2 class="sub_title">Message list</h2>
-    <ul class="messageUl">
-        {% for message in messages %}
-            <li class="message">
-                <div class="time">{{ message.emission_time }} </div> 
-                <div class="messageContent">{{ message.content }}</div>
-                <ul div class="lowerButton">
-                    <li><a href="{% url 'message_app:message' message.id %}">Details</a></li>
-                    <li><a href="{% url 'message_app:delete' message.id %}">Delete</a></li>
-                    <li style="float:right"><a href="{% url 'message_app:message' message.id %}">Author <b>{{ message.author }} </b></a></li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+<h2 class="sub_title">Message list</h2>
+<ul class="messageUl">
+    {% for message in messages %}
+        <li class="message">
+            <div class="time">{{ message.emission_time }} </div> 
+            <div class="messageContent">{{ message.content }}</div>
+            <ul div class="lowerButton">
+                <li><a href="{% url 'message_app:message_details' message.id %}">Details</a></li>
+                <li><a href="{% url 'message_app:delete' message.id %}">Delete</a></li>
+                <li style="float:right"><a href="{% url 'login_app:user_details' message.author %}">Author <b>{{ message.author }} </b></a></li>
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

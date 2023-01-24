@@ -1,3 +1,9 @@
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
 body {
     width: 75%;
 }
@@ -22,11 +28,18 @@ h2.sub_title {
 }
 
 .module {
-    border: 1px solid gray;
+    border: 1px solid black;
     border-radius: 3px;
     padding: 15px;
     margin: 5px;
     width: 75%;
+}
+
+.module_main {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
 }
 
 .container {
@@ -54,8 +67,17 @@ h2.sub_title {
 .bottom_row {
     padding-top: 10px;
     padding-bottom: 10px;
+    height: 40px;
 }
 
-#right_button {
+.right_button {
     float: right;
+}
+
+.app_brand {
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    height: 140px;
+    text-align: center;
+    text-decoration: underline overline black;
 }

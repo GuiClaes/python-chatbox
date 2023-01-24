@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'message.css' %}">
+
+ <div id='header' class="module_main">{% include "header.html" %}</div>
+ <div class="box">
+    <div class="box_left">
+        <div class="module_main">
+            {% include "messages.html" %}
+        </div>
+    </div>
+    <div class="box_right">
+        <div class="app_brand module_main">
+            <h1>Chatbox</h1>
+        </div>
+        {% if form %}
+        <div class="module_main">
+            {% include "message_form.html" %}
+        </div>
+        {% endif %}
+        {% if message %}
+        <div class="module_main">
+            {% include "message_details.html" %}
+        </div>
+        {% endif %}
+    </div>
+</div>

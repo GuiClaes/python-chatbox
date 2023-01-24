@@ -4,7 +4,6 @@ table {
 }
 
 #detail_module {
-    width: 50%;
     padding-bottom: 0px;
 }
 
@@ -14,12 +13,12 @@ table {
     margin-right: 15px;
 }
 
-td {
+.details_td {
     text-align: center;
     padding-left: 15px;
 }
 
-tr:hover {
+.details_tr:hover {
     background-color: lightgreen;
 }
 
@@ -27,6 +26,6 @@ th {
     background-color: lightgreen;
 }
 
-table, th, td {
+.details_table, .details_th, .details_td {
     border: 1px solid black;
 }
