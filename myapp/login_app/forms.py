@@ -2,10 +2,10 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'class':'short'}))
-    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class':'short'}))
-    confirm_password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class':'short'}))
-    email = forms.CharField(required=True, max_length=200, widget=forms.TextInput(attrs={'class':'short'}))
+    username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'id':'floatingInput', 'class':'form-control'}))
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id':'floatingPassword', 'class':'form-control'}))
+    confirm_password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id':'floatingPassword', 'class':'form-control'}))
+    email = forms.CharField(required=True, max_length=200, widget=forms.TextInput(attrs={'id':'floatingInput', 'class':'form-control'}))
     
     def is_valid(self) -> bool:
         return super().is_valid() and self.get_password() == self.get_confirm_password()
@@ -30,8 +30,8 @@ class RegisterForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'class':'short'}))
-    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class':'short'}))
+    username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'id':'floatingInput', 'class':'form-control'}))
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id':'floatingPassword', 'class':'form-control'}))
     #Hardcoding attribute name is not very Cool...
     def get_username(self):
         return self.data.get('username')
