@@ -1,38 +1,37 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Message
-from .forms import MessageCreationForm
+from .forms import MessageCreationForm, UserFinderForm
 from .repository import MessageRepository
-from datetime import datetime
+from login_app.repository import UserRepository
 
 APP_NAME = "message-app"
 
-def index(request, message = MessageRepository.get_last_message()):
-    messages = MessageRepository.get_messages()
-    form = MessageCreationForm()
-    return render(request, 'index.html', {'messages': messages, 'form': form, 'user_id': "admin", "message": message})
+def index(request, connected_user = "admin",  target_user = "Guillaume"):
+    inbox_form = MessageCreationForm()
+    user_finder_form = UserFinderForm()
+    messages = MessageRepository.get_messages(connected_user, target_user)
 
-def get_message_details(request, message_id):
-    message = MessageRepository.get_message(message_id)
-    return index(request, message)
+    if "user_finder" in request.session:
+        user_finder = request.session['user_finder']
+        del request.session["user_finder"]
+        target_message_list = MessageRepository.get_last_messages_for_targets(connected_user, user_finder)
+    else:
+        target_message_list = MessageRepository.get_targets_and_last_messages(connected_user)        
 
-def get_messages(request):
-    messages = Message.objects.order_by('-emission_time')
-    return render(request, 'messages.html', {'messages': messages, 'user_id': "admin"})
+    return render(request, 'index.html', {'messages': messages, 'connected_user': connected_user, 'target_user': target_user, 'inbox_form': inbox_form, 'user_finder_form': user_finder_form, 'target_message_list': target_message_list})
 
-def delete_message(request, message_id):
-    message = MessageRepository.get_message(message_id)
-    message.delete()
-    return index(request)
-
-def create_message(request):
-    if request.method == 'GET':
-        return index(request)
-    elif request.method == 'POST':
+def create_message(request, connected_user = "admin",  target_user = "Guillaume"):
+    if request.method == 'POST':
         form = MessageCreationForm(request.POST)
         if form.is_valid():
-            #Author should be provided with authentification
-            Message(content = form.get_content(), emission_time = datetime.now(), author = form.get_author()).save()
-            return HttpResponseRedirect('/'+APP_NAME)
+            MessageRepository.create_message(author = connected_user, target = target_user, content = form.get_content())
+        return HttpResponseRedirect('/'+APP_NAME)
     else:
         raise Exception("Request method not handled")
+
+def find_user(request):
+    if request.method == 'POST':
+        form = UserFinderForm(request.POST)
+        usernames = UserRepository.find_user(form.get_user())
+        request.session['user_finder'] = usernames
+        return HttpResponseRedirect('/'+APP_NAME)

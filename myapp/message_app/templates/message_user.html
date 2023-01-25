@@ -1,0 +1,40 @@
+<div class="inbox_people">
+  <div class="headind_srch">
+    <div class="recent_heading">
+      <h4>User</h4>
+    </div>
+    <div class="srch_bar">
+      <div class="stylish-input-group">
+        <form  action="{% url 'message_app:find_user' %}" method="post">
+          {% csrf_token %}
+          {{ user_finder_form.user }}
+          <span class="input-group-addon">
+            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+          </span> 
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="inbox_chat">
+    <div class="chat_list active_chat">
+      <div class="chat_people">
+        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+        <div class="chat_ib">
+          <h5>{{ target_message.target }}</h5>
+          <p>{{ target_message.message }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat_list inactive_chat">
+      {% for target_message in target_message_list %}
+      <div class="chat_people">
+        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+        <div class="chat_ib">
+          <h5>{{ target_message.target }}</h5>
+          <p>{{ target_message.message }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

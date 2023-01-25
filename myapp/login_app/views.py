@@ -29,7 +29,7 @@ def login(request):
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            if Register.objects.filter(username = form.get_username(), password = form.get_password()).exists(): #Not save at all :p
+            if Register.objects.filter(username = form.get_username(), password = form.get_password()).exists(): #Not safe at all :p
                 return HttpResponseRedirect('/message-app')
         return render(request, 'login.html', {'form': form, 'error_message': "Log in failed, please verify your credential."})
     else:

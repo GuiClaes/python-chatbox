@@ -1,27 +1,24 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
-<link rel="stylesheet" href="{% static 'message.css' %}">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
- <div id='header' class="module_main">{% include "header.html" %}</div>
- <div class="box">
-    <div class="box_left">
-        <div class="module_main">
-            {% include "messages.html" %}
-        </div>
-    </div>
-    <div class="box_right">
-        <div class="app_brand module_main">
-            <h1>Chatbox</h1>
-        </div>
-        {% if form %}
-        <div class="module_main">
-            {% include "message_form.html" %}
-        </div>
-        {% endif %}
-        {% if message %}
-        <div class="module_main">
-            {% include "message_details.html" %}
-        </div>
-        {% endif %}
-    </div>
-</div>
+{% include "header.html" %}
+<html>
+    <head>
+        {% load static %}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'message_box.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h3 class=" text-center">Chatbox</h3>
+            <div class="messaging">
+                <div class="inbox_msg">
+                    {% include "message_user.html" %}
+                    {% include "message_box.html" %}
+                </div>
+            </div>
+        </div>  
+    </body> 
+</html>

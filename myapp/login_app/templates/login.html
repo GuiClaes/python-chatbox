@@ -1,36 +1,105 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
-<link rel="stylesheet" href="{% static 'form.css' %}">
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>login</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<body>
-    <div class="module">
-        <h2 class="sub_title">Login</h2>
-        <form class="container" action="{% url 'login_app:login' %}" method="post">
-            {% csrf_token %}
-            <div class="box">
-                <table class="box_left">
-                    <tr class="row">
-                        <td class="first_td"><label class="form_label"> Username </label></td>
-                        <td>{{ form.username }}</td>
-                    </tr>
-                    <tr class="row">
-                        <td class="first_td"><label class="form_label"> Password </label></td>
-                        <td>{{ form.password }}</td>
-                    </tr>
-                </table>
-                <div class="box_right">
-                <div class="information_box">
-                    <p>This login app is experimental, please do not provide sensible information.</p>
-                </div>
-                {% if error_message %}
-                    <div class='error_message'>{{ error_message }}</div>
-                {% endif %}
-                </div>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+        }
+        html,body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="text"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .red-button {
+            margin-bottom: 10px;
+        }
+        .red-button:hover {
+            background-color: white;
+            color: black;
+        }
+        .app_brand {
+            font-family: "Raleway", sans-serif;
+            font-size: 25px;
+            height: 60px;
+            text-align: center;
+            text-decoration: underline overline black;
+        }
+    </style>
+  </head>
+  <body class="text-center">
+        <main class="form-signin">
+            <div class="bordered">
+            <div class="app_brand">
+                <h1>Chatbox</h1>
             </div>
-            <div class="bottom_row">
-                <button class="back_button" onclick="location.href = '/login-app/register'">Create an account</button>
-                <input class="right_button back_button" type="submit" value="Log in">
+                <form  action="{% url 'login_app:login' %}" method="post">
+                    {% csrf_token %}
+                    <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+                    <div class="form-floating">
+                        {{ form.username }}
+                        <label for="floatingInput" class="form_label"> Username </label>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.password }}
+                        <label for="floatingPassword" class="form_label"> Password </label>
+                    </div>
+                    <button class="red-button w-100 btn btn-lg btn-danger" type="submit">Log in</button>
+                    <button class="red-button w-100 btn btn-lg btn-danger" onclick="location.href = '/login-app/register'">Create an account</button>
+                </form>
             </div>
-        </form>
-    </div>
-</body>
+            {% if error_message %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ error_message }}</div>
+            {% endif %}
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">This login app is experimental, please do not provide sensible information.</div>
+        </main>
+    </body>
+</html>
