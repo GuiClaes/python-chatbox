@@ -7,18 +7,22 @@ from login_app.repository import UserRepository
 APP_NAME = "message-app"
 
 def index(request, connected_user = "admin",  target_user = "Guillaume"):
+    messageRepository = MessageRepository()
     inbox_form = MessageCreationForm()
     user_finder_form = UserFinderForm()
-    messages = MessageRepository.get_messages(connected_user, target_user)
+    messages = messageRepository.get_messages(author = connected_user, target = target_user)
 
     if "user_finder" in request.session:
         user_finder = request.session['user_finder']
         del request.session["user_finder"]
-        target_message_list = MessageRepository.get_last_messages_for_targets(connected_user, user_finder)
+        user_message_list = messageRepository.get_target_last_message(connected_user, user_finder)
     else:
-        target_message_list = MessageRepository.get_targets_and_last_messages(connected_user)        
+        user_message_list = messageRepository.get_targets_and_last_messages(user=connected_user)     
 
-    return render(request, 'index.html', {'messages': messages, 'connected_user': connected_user, 'target_user': target_user, 'inbox_form': inbox_form, 'user_finder_form': user_finder_form, 'target_message_list': target_message_list})
+    unactive_targets = list(filter(lambda x: x.get_target() != target_user, user_message_list))
+    active_target = next(filter(lambda x: x.get_target() == target_user, user_message_list))
+
+    return render(request, 'index.html', {'messages': messages, 'connected_user': connected_user, 'inbox_form': inbox_form, 'user_finder_form': user_finder_form, 'active_target': active_target, 'unactive_targets': unactive_targets})
 
 def create_message(request, connected_user = "admin",  target_user = "Guillaume"):
     if request.method == 'POST':

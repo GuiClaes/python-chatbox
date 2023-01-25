@@ -27,3 +27,9 @@ class Target_message():
     def __init__(self, target, message):
         self.target = target
         self.message = message
+
+    def get_target(self):
+        return self.target
+
+    def get_message(self):
+        return self.message

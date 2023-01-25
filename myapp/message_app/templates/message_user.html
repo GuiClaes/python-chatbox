@@ -16,22 +16,24 @@
     </div>
   </div>
   <div class="inbox_chat">
+    {% if active_target %}
     <div class="chat_list active_chat">
       <div class="chat_people">
         <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
         <div class="chat_ib">
-          <h5>{{ target_message.target }}</h5>
-          <p>{{ target_message.message }}</p>
+          <h5>{{ active_target.target }}</h5>
+          <p>{{ active_target.message }}</p>
         </div>
       </div>
     </div>
+    {% endif %}
     <div class="chat_list inactive_chat">
-      {% for target_message in target_message_list %}
+      {% for unactive_target in unactive_targets %}
       <div class="chat_people">
         <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
         <div class="chat_ib">
-          <h5>{{ target_message.target }}</h5>
-          <p>{{ target_message.message }}</p>
+          <h5>{{ unactive_target.target }}</h5>
+          <p>{{ unactive_target.message }}</p>
         </div>
       </div>
       {% endfor %}
