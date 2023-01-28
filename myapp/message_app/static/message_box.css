@@ -70,6 +70,10 @@ img{ max-width:100%;}
   background:#ffe3e3;
 }
 
+.inactive_people:hover {
+  background-color: #ffcccc;
+}
+
 .incoming_msg_img {
   font-size: x-small;
   display: inline-block;

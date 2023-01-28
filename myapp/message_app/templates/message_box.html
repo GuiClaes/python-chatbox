@@ -1,9 +1,9 @@
 <div class="mesgs">
     <div class="msg_history">
     {% for message in messages %}
-        {% if message.author != 'admin' %}
+        {% if message.author != connected_user %}
         <div class="incoming_msg">
-            <div class="incoming_msg_img"> {{ message.target }} </div>
+            <div class="incoming_msg_img"> {{ message.author }} </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
                     <p>{{ message.content }}</p>

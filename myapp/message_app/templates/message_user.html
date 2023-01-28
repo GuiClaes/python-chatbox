@@ -9,7 +9,7 @@
           {% csrf_token %}
           {{ user_finder_form.user }}
           <span class="input-group-addon">
-            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+            <button type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button>
           </span> 
         </form>
       </div>
@@ -29,11 +29,13 @@
     {% endif %}
     <div class="chat_list inactive_chat">
       {% for unactive_target in unactive_targets %}
-      <div class="chat_people">
-        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-        <div class="chat_ib">
-          <h5>{{ unactive_target.target }}</h5>
-          <p>{{ unactive_target.message }}</p>
+      <div onclick='location.href="{% url 'message_app:change_target' unactive_target.target %}"'>
+        <div class="chat_people inactive_people">
+          <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+          <div class="chat_ib">
+            <h5>{{ unactive_target.target }}</h5>
+            <p>{{ unactive_target.message }}</p>
+          </div>
         </div>
       </div>
       {% endfor %}

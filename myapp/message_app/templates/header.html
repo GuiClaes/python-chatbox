@@ -35,11 +35,11 @@
           <a class="nav-link active" aria-current="page" href="">Messages</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login_app:user_details' connected_user %}">My profile</a>
+          <a class="nav-link" href="{% url 'login_app:user_details' %}">My profile</a>
         </li>
       </ul>
       <li class="d-flex">
-        <a style="color: white;" class="nav-link btn btn-outline-danger" href="{% url 'login_app:login' %}">Logout</a>
+        <a style="color: white;" class="nav-link btn btn-outline-danger" href="{% url 'login_app:logout' %}">Logout</a>
         </li>
     </div>
   </div>
