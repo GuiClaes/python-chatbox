@@ -1,5 +1,13 @@
 <div class="mesgs">
-    <div class="msg_history">
+    <script>
+        
+        window.onload = function bottom() {
+            obj = document.getElementById('bottom');
+            obj.scrollTop = obj.scrollHeight
+        };
+        bottom();
+    </script>
+    <div id="bottom" class="msg_history">
     {% for message in messages %}
         {% if message.author != connected_user %}
         <div class="incoming_msg">
