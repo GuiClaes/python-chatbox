@@ -32,10 +32,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Messages</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'message_app:index' %}">Messages</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login_app:user_details' %}">My profile</a>
+          <a class="nav-link" href="{% url 'message_app:user_details' %}">My profile</a>
         </li>
       </ul>
       <li class="d-flex">

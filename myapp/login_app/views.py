@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import RegisterForm, LoginForm
-from .models import Register, User
+from .repository import RegisterRepository
 
 APP_NAME = "login-app"
 USER_FINDER = "user_finder"
@@ -14,11 +14,10 @@ def register(request):
         return render(request, 'register.html', {'form': form})
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
+        repository = RegisterRepository()
         if form.is_valid():
-            exists = Register.objects.filter(username = form.get_username()).exists()
-            Register(username = form.get_username_if_unique(exists), password = form.get_password()).save() #We should crypt password
-            User(username = form.get_username(), email = form.get_email()).save()
-            return HttpResponseRedirect('/'+APP_NAME+'/login')
+            repository.register(username = form.get_username(), password = form.get_password(), email = form.get_email())
+            return HttpResponseRedirect('/'+APP_NAME)
         else:
             return render(request, 'register.html', {'form': form, 'error_message': "Your registration is not valid."})   
     else:
@@ -31,10 +30,12 @@ def login(request):
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            if Register.objects.filter(username = form.get_username(), password = form.get_password()).exists(): #Not safe at all :p
-                request.session[CURRENT_USER] = form.get_username()
+            repository = RegisterRepository()
+            if repository.authenticate(username = form.get_username(), password = form.get_password()):
+                request.session[CURRENT_USER] = crypt_session_attribute(form.get_username()) # We crypt username in session to avoid some client leaks
                 return HttpResponseRedirect('/message-app')
-        return render(request, 'login.html', {'form': form, 'error_message': "Log in failed, please verify your credential."})
+            else:
+                return render(request, 'login.html', {'form': form, 'error_message': "Log in failed, please verify your credential."})
     else:
         raise Exception("Request method not handled")
 
@@ -45,15 +46,9 @@ def logout(request):
         del request.session[USER_FINDER]
     if TARGET_USER in request.session:
         del request.session[TARGET_USER]
-    return HttpResponseRedirect('/' + APP_NAME + "/login")
+    return HttpResponseRedirect('/' + APP_NAME)
 
-def get_user_details(request):
-    user_id = verify_session(request)
-    user = get_object_or_404(User, pk = user_id)
-    return render(request, 'user_details.html', {'user': user})
+#-----------------------------------------------------------------
 
-def verify_session(request):
-    if CURRENT_USER in request.session:
-        return request.session[CURRENT_USER]
-    else:
-        return HttpResponseRedirect('/'+"login-app")
+def crypt_session_attribute(value:str):
+    return "\_/".join(value)

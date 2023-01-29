@@ -13,8 +13,16 @@
                 <td class="details_td">{{ user.username }}</td>
             </tr>
             <tr class="details_tr">
-                <td class="details_td">Author</td>
+                <td class="details_td">Email</td>
                 <td class="details_td"> {{ user.email }}</td>
+            </tr>
+            <tr class="details_tr">
+                <td class="details_td">Number of messages sent</td>
+                <td class="details_td"> {{ nb_messages_sent }}</td>
+            </tr>
+            <tr class="details_tr">
+                <td class="details_td">Number of messages recieved</td>
+                <td class="details_td"> {{ nb_messages_recieved }}</td>
             </tr>
         </table>
         <div class="bottom_row">

@@ -1,0 +1,40 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% include "header.html" %}
+<div class="col-md-5 col-lg-4 order-md-last">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span style="color:#dc3545">Your profile</span>
+    </h4>
+    <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+        <div>
+            <h6 class="my-0">Username</h6>
+            <small class="text-muted">Identifier</small>
+        </div>
+        <span class="text-muted">{{ user.username }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+        <div>
+            <h6 class="my-0">Email</h6>
+            <small class="text-muted">Email address of the user</small>
+        </div>
+        <span class="text-muted">{{ user.email }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+        <div>
+            <h6 class="my-0">Number of messages sent</h6>
+            <small class="text-muted">The amount of messages sent by the user</small>
+        </div>
+        <span class="text-muted">{{ nb_messages_sent }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">Number of messages recieved</h6>
+                <small class="text-muted">The amount of messages recieved by the user</small>
+            </div>
+            <span class="text-muted">{{ nb_messages_recieved }}</span>
+        </li>
+    </ul>
+</div>

@@ -26,7 +26,7 @@ class MessageRepository:
     def get_targets_last_message(self, user, targets):        
         targets_messages = []
         for target in targets:
-            last_message = self.get_last_message(user, target)
+            last_message = self.get_last_message(user1 = user, user2 = target)
             if last_message == None:
                 targets_messages.append(Target_message(target, "No message sent to this user yet."))
             else:
@@ -42,3 +42,9 @@ class MessageRepository:
             return message.get_target()
         else:
             return message.get_author()
+    
+    def count_message_sent_by_username(self, username):
+        return Message.objects.filter(author = username).count()
+
+    def count_message_sent_to_username(self, username):
+        return Message.objects.filter(target = username).count()

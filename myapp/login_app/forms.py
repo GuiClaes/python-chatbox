@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import ValidationError
 
 class RegisterForm(forms.Form):
     username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'id':'floatingInput', 'class':'form-control', 'autoComplete':'off'}))
@@ -22,12 +21,6 @@ class RegisterForm(forms.Form):
 
     def get_email(self):
         return self.data.get('email')
-
-    def get_username_if_unique(self, exists):
-        if exists:
-            raise ValidationError("Username already exists")
-        return self.data.get('username')
-
 
 class LoginForm(forms.Form):
     username = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'id':'floatingInput', 'class':'form-control', 'autoComplete':'off'}))
