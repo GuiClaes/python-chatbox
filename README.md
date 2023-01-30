@@ -8,5 +8,5 @@ There are 2 µservices :
 - Message-app
 
 HTML/CSS has been mainly done with Bootstrap as I'm not a good designer.
-Back-end has been done with the following pattern : Model - View - Template. I have voluntary add a 'Repository' layer to make the lisibility easier.
+Back-end has been done with the following pattern : Model - View - Template. I have voluntary add a 'Service' layer to make the lisibility easier.
 All sensitive data are crypted with Bcrypt.
