@@ -22,7 +22,7 @@ class Message(models.Model):
 
 class Target_message():
     target: str
-    message: str
+    message: Message
 
     def __init__(self, target, message):
         self.target = target

@@ -3,15 +3,14 @@ from .models import Register, User
 from django.shortcuts import get_object_or_404
 import bcrypt
 
-class UserRepository():
+class UserService():
     def find_user(self, start):
         return [q.get_username() for q in User.objects.filter(username__startswith=start).all()]
 
     def find_user_by_username(self, username):
         return get_object_or_404(User, pk = username)
 
-class RegisterRepository():
-
+class RegisterService():
     def register(self, username, password, email):
         if Register.objects.filter(username = username).exists():
             raise ValidationError("Username already exists")
@@ -19,7 +18,7 @@ class RegisterRepository():
             password:bytes = password.encode('utf-8')
             hashed_password:bytes = bcrypt.hashpw(password, bcrypt.gensalt(10))
             Register(username = username, password = hashed_password.decode('utf-8')).save() #We have to decode because password is store as a str in DB
-            User(username = username, email =email).save()
+            User(username = username, email = email).save()
 
     def authenticate(self, username, password):
         exists = Register.objects.filter(username = username).exists()

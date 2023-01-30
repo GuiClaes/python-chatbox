@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import RegisterForm, LoginForm
-from .repository import RegisterRepository
+from .service import RegisterService
 
 APP_NAME = "login-app"
 USER_FINDER = "user_finder"
@@ -14,9 +14,9 @@ def register(request):
         return render(request, 'register.html', {'form': form})
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
-        repository = RegisterRepository()
+        service = RegisterService()
         if form.is_valid():
-            repository.register(username = form.get_username(), password = form.get_password(), email = form.get_email())
+            service.register(username = form.get_username(), password = form.get_password(), email = form.get_email())
             return HttpResponseRedirect('/'+APP_NAME)
         else:
             return render(request, 'register.html', {'form': form, 'error_message': "Your registration is not valid."})   
@@ -30,8 +30,8 @@ def login(request):
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            repository = RegisterRepository()
-            if repository.authenticate(username = form.get_username(), password = form.get_password()):
+            service = RegisterService()
+            if service.authenticate(username = form.get_username(), password = form.get_password()):
                 request.session[CURRENT_USER] = crypt_session_attribute(form.get_username()) # We crypt username in session to avoid some client leaks
                 return HttpResponseRedirect('/message-app')
             else:
